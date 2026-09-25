@@ -1,0 +1,72 @@
+/* 全站颜色：深蓝主色与冷灰背景呼应Java开发求职方向。 */
+:root { --primary:#183f5c; --accent:#27759d; --ink:#172e40; --muted:#586c7c; --background:#f5f8fa; --line:#dce5eb; --white:#fff; --radius:16px; }
+/* 统一盒模型，内边距不再撑大布局宽度。 */
+* { box-sizing:border-box; }
+/* 顶部锚点预留导航栏位置，避免标题被遮挡。 */
+html { scroll-behavior:smooth; scroll-padding-top:100px; }
+/* 系统字体不依赖外部CDN，离线也能显示中文。 */
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink); background:var(--white); font-size:16px; line-height:1.75; }
+/* 链接继承主题色，图片不会突破父容器。 */
+a { color:inherit; text-decoration:none; } img { max-width:100%; display:block; } button { font:inherit; }
+/* 键盘操作时保留醒目的焦点边框。 */
+a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:5px; }
+/* 跳过导航链接仅在键盘聚焦时出现。 */
+.skip-link { position:absolute; left:16px; top:-70px; z-index:20; padding:10px 18px; background:white; } .skip-link:focus { top:8px; }
+/* 内容统一限制在1120px，宽屏不会出现过长的文字行。 */
+.wrap { width:min(1120px,calc(100% - 80px)); margin-inline:auto; }
+/* 导航使用弹性布局；轻描边区分页面内容。 */
+.site-header { min-height:88px; display:flex; align-items:center; justify-content:space-between; padding:16px max(40px,calc((100vw - 1120px)/2)); gap:24px; background:white; border-bottom:1px solid var(--line); }
+/* 姓名标识与导航不依赖图标库。 */
+.wordmark { display:flex; align-items:center; gap:12px; font-weight:700; white-space:nowrap; } .monogram { width:40px; height:40px; display:grid; place-items:center; background:var(--primary); color:white; border-radius:10px; letter-spacing:-1px; } .wordmark-sub { color:var(--muted); font-size:14px; font-weight:400; margin-left:6px; }
+/* 主导航保持舒适的点击间距。 */
+nav { display:flex; gap:28px; font-size:14px; } nav a { padding:8px 0; } nav a:hover { color:var(--accent); }
+/* 横幅图位于内容后方，独立渐变确保文字可读。 */
+.hero { position:relative; overflow:hidden; background:#edf4f8; min-height:610px; }
+.hero-art { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.hero::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(247,250,252,.98) 0%,rgba(247,250,252,.86) 37%,rgba(247,250,252,.06) 80%); pointer-events:none; }
+/* 左侧身份、求职意向和主要操作保持首屏可见。 */
+.hero-content { position:relative; z-index:1; padding-block:66px 48px; }
+.eyebrow { margin:0 0 18px; font-size:13px; font-weight:650; color:var(--accent); letter-spacing:.12em; }
+h1 { margin:0; font-size:clamp(42px,5.2vw,68px); font-weight:650; line-height:1.22; letter-spacing:-.04em; } h1 span { display:block; color:var(--primary); }
+.hero-role { font-size:19px; margin:22px 0 14px; color:var(--muted); } .hero-role strong { color:var(--primary); margin-left:12px; font-size:24px; }
+.hero-intro { margin:0; color:var(--muted); font-size:17px; }
+/* 下载和项目按钮有相同高度，主次清晰。 */
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; } .button { min-height:48px; padding:11px 22px; border:1px solid var(--primary); border-radius:7px; display:inline-flex; align-items:center; gap:24px; font-weight:600; } .primary { color:white; background:var(--primary); } .secondary { background:rgba(255,255,255,.75); } .button:hover { box-shadow:0 6px 18px #163d5818; }
+/* 头像是装饰性图形，不表示真人照片。 */
+.identity { display:flex; align-items:center; gap:14px; margin-top:34px; } .identity img { border-radius:50%; border:3px solid white; width:54px; height:54px; object-fit:cover; } .identity strong { display:block; font-size:14px; } .identity span { color:var(--muted); font-size:13px; }
+.hero-index { position:absolute; right:max(40px,calc((100vw - 1120px)/2)); bottom:48px; z-index:1; color:var(--primary); font-size:12px; letter-spacing:.16em; line-height:2; }
+/* 四项个人信息在桌面横排，手机端由媒体查询换行。 */
+.profile-strip { display:grid; grid-template-columns:repeat(4,1fr); padding-block:28px; border-bottom:1px solid var(--line); gap:24px; } .profile-strip span { display:block; font-size:13px; color:var(--muted); margin-bottom:5px; } .profile-strip strong { font-size:16px; font-weight:600; }
+/* 大区块以留白组织阅读节奏。 */
+.section { padding-block:72px; } .section-heading { display:flex; align-items:end; justify-content:space-between; gap:30px; margin-bottom:34px; } .section-heading .eyebrow { margin-bottom:9px; } h2 { margin:0; font-size:32px; line-height:1.35; letter-spacing:-.03em; } .section-heading>p { color:var(--muted); font-size:14px; margin:0 0 4px; }
+/* 三类技能等宽排布，但不使用虚构的熟练度百分比。 */
+.skill-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; } .skill { border-top:2px solid var(--line); padding-top:24px; } .skill-symbol { font:500 26px/1.2 ui-monospace,monospace; color:var(--accent); } h3 { margin:17px 0 12px; font-size:21px; line-height:1.5; } .skill p { color:var(--muted); margin:0 0 22px; }
+/* 小标签仅用于标出具体技术名称。 */
+.tags { display:flex; flex-wrap:wrap; gap:8px; } .tags span { font-size:13px; padding:4px 10px; background:#eef3f6; border-radius:4px; color:var(--primary); }
+/* 项目区采用深蓝底，形成页面最重要的视觉重心。 */
+.projects-section { background:#102c41; color:white; } .projects-section .wrap { display:grid; grid-template-columns:1fr 1fr; gap:24px; } .projects-section .section-heading { grid-column:1/-1; margin-bottom:10px; } .projects-section .eyebrow { color:#99c3de; } .projects-section .section-heading>p { color:#bdcdd9; }
+/* 每个项目的详细说明可独立展开。 */
+.project { padding:32px; border:1px solid #476075; background:#17364d; border-radius:var(--radius); } .project-label { display:flex; justify-content:space-between; gap:16px; color:#a4bbcb; font-size:12px; letter-spacing:.08em; } .project h3 { font-size:28px; margin:22px 0 4px; } .project-role { color:#c3d3de; font-size:14px; margin:0 0 16px; } .project>p:not(.project-role) { color:#d7e2ea; min-height:84px; } .project .tags span { background:#29495f; color:#e0edf5; }
+/* 项目数字只来自已提供的实训报告。 */
+.project-numbers { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:26px 0; padding-block:22px; border-top:1px solid #476075; border-bottom:1px solid #476075; } .project-numbers strong { font-size:34px; font-weight:550; line-height:1.2; } .project-numbers strong span { font-size:13px; margin-left:7px; font-weight:400; } .project-numbers p { font-size:12px; margin:6px 0 0; color:#b9cddb; }
+/* 原生details无需脚本即可支持鼠标、触屏和键盘展开。 */
+details { margin-top:28px; } summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:14px; min-height:44px; } summary::-webkit-details-marker { display:none; } details[open] summary span { transform:rotate(45deg); } .project-detail { border-top:1px solid #476075; margin-top:12px; padding-top:12px; color:#d7e2ea; font-size:15px; } .project-detail h4 { color:white; margin:15px 0 6px; } .project-detail p { margin:6px 0; } .project-detail ol { padding-left:20px; }
+/* 教育经历使用时间列和内容列，保持履历式阅读。 */
+.education { display:grid; grid-template-columns:250px 1fr; gap:32px; padding:32px 0; border-block:1px solid var(--line); } .education-date { color:var(--primary); font-weight:600; } .education-date span { display:block; font-size:13px; color:var(--muted); font-weight:400; } .education h3 { margin:0; font-size:24px; } .education p { color:var(--muted); margin:8px 0 16px; } .education-honors { display:flex; flex-wrap:wrap; gap:10px 22px; font-size:14px; }
+/* 证书保留原图，不生成或更改证书上的内容。 */
+.honors { padding-top:0; } .certificate-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; } .certificate { border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; } .certificate:hover { border-color:var(--accent); } .certificate-image { height:234px; background:#f2f5f7; padding:20px; display:flex; align-items:center; justify-content:center; overflow:hidden; } .certificate-image img { width:100%; height:100%; object-fit:contain; } .certificate-image.sideways img { width:186px; height:260px; max-width:none; transform:rotate(-90deg); } .certificate-body { padding:23px; } .award-level { font-size:12px; color:var(--accent); font-weight:600; } .certificate h3 { font-size:18px; margin:9px 0; } .certificate p { font-size:14px; color:var(--muted); margin:0; } .other-honors { color:var(--muted); font-size:14px; margin:24px 0 0; }
+/* 自我评价用事实支撑，不填写技能评分或假想经历。 */
+.about-section { background:var(--background); } .about { display:grid; grid-template-columns:1fr 2fr; gap:65px; padding-block:62px; } .about p { color:var(--muted); } .about .about-lead { font-size:26px; color:var(--primary); line-height:1.65; margin:0 0 20px; }
+/* 联系按钮是真实的复制操作，操作结果会通过aria-live提示。 */
+.contact { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; } .contact h2 { font-size:38px; } .contact p { color:var(--muted); } .contact-links button,.contact-links>a { display:block; width:100%; text-align:left; padding:16px 0; border:0; border-bottom:1px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; } .contact-links span { display:block; font-size:13px; color:var(--muted); } .contact-links strong { font-size:21px; font-weight:500; overflow-wrap:anywhere; } #copy-status { min-height:26px; font-size:14px; color:var(--accent); margin:12px 0 0; }
+/* 页脚保持轻量，仅含姓名及返回顶部。 */
+.footer { display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-block:24px; color:var(--muted); font-size:13px; }
+/* 中等屏幕减少横向间距，保留内容可读性。 */
+@media (max-width:900px) { .wrap { width:calc(100% - 48px); } .site-header { padding:14px 24px; } nav { gap:16px; } .wordmark-sub { display:none; } .hero-index { right:24px; } .skill-grid { gap:22px; } .project { padding:24px; } .certificate-grid { gap:14px; } .certificate-image { height:195px; } .certificate-body { padding:18px; } .education { grid-template-columns:205px 1fr; } }
+/* 手机屏幕的技能、项目、证书和联系区改为单列。 */
+@media (max-width:600px) { .wrap { width:calc(100% - 40px); } .site-header { padding:14px 20px; flex-wrap:wrap; gap:12px; } nav { width:100%; justify-content:space-between; gap:10px; } .hero { min-height:auto; } .hero-content { padding-block:45px 36px; } .hero::after { background:linear-gradient(90deg,rgba(247,250,252,.98),rgba(247,250,252,.8)); } h1 { font-size:48px; } .hero-intro { font-size:16px; } .hero-index { display:none; } .hero-actions { gap:10px; } .button { padding:11px 16px; gap:12px; } .identity strong { font-size:13px; } .profile-strip { grid-template-columns:1fr 1fr; gap:20px 12px; } .profile-strip strong { font-size:14px; } .section { padding-block:48px; } .section-heading { display:block; margin-bottom:26px; } .section-heading>p { margin-top:14px; } h2 { font-size:28px; } .skill-grid,.projects-section .wrap,.certificate-grid,.about,.contact { grid-template-columns:1fr; } .skill-grid { gap:28px; } .projects-section .section-heading { grid-column:auto; } .project { padding:24px 22px; } .project h3 { font-size:25px; } .project>p:not(.project-role) { min-height:0; } .project-numbers { gap:8px; } .project-numbers strong { font-size:31px; } .education { grid-template-columns:1fr; gap:18px; } .education h3 { font-size:21px; } .honors { padding-top:0; } .certificate-grid { gap:22px; } .certificate-image { height:250px; } .certificate-image.sideways img { width:204px; height:270px; } .about { gap:28px; padding-block:44px; } .about .about-lead { font-size:23px; } .contact { gap:22px; } .contact h2 { font-size:32px; } }
+/* 手机上提供固定返回顶部入口，避免长页面反复滑动。 */
+.back-top { display:none; }
+@media (max-width:600px) { .back-top { display:block; position:fixed; bottom:20px; right:16px; z-index:10; background:var(--primary); color:white; padding:9px 14px; border-radius:24px; box-shadow:0 4px 14px #102c4130; font-size:14px; } .footer { padding-bottom:80px; } }
+/* 减少动态效果偏好的用户不使用平滑滚动。 */
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
